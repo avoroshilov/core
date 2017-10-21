@@ -8,20 +8,20 @@ Core contains:
 1. Math - 2,3 and 4 dimensional vector classes, 3×4 and 4×4 matrices
 2. Formats - simple TGA and WAV file writers
 3. Texture - fast tileable power-of-2 texture synthesis:
-  1. generators - fractal plasm, voronoi cells, bricks, radial gradients, etc.
-  2. processors - map distortions, rotozoom, etc.
-  3. color manipulations - brightness/contrast, convolution filters (various blurs, sobel, emboss, and others), HSV adjustments, etc.
-  4. layer blending operations
+    1. generators - fractal plasm, voronoi cells, bricks, radial gradients, etc.
+    2. processors - map distortions, rotozoom, etc.
+    3. color manipulations - brightness/contrast, convolution filters (various blurs, sobel, emboss, and others), HSV adjustments, etc.
+    4. layer blending operations
 4. SFX - sound synthesis and processing classes:
-  1. generators - oscillators and noises
-  2. 2nd order IIR filters
-  3. delay lines
-  4. derived effects such as Chorus, Flanger, Phaser
-  5. 4-channel FDN reverb
+    1. generators - oscillators and noises
+    2. 2nd order IIR filters
+    3. delay lines
+    4. derived effects such as Chorus, Flanger, Phaser
+    5. 4-channel FDN reverb
 5. Windows OS specific helpers:
-  1. timer
-  2. window manipulations
-  3. working with WaveOut (including spatial positioning)
+    1. timer
+    2. window manipulations
+    3. working with WaveOut (including spatial positioning)
 
 ## Projects
 Projects that **do not** use this unified Core:
