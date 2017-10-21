@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\helpers">
+      <UniqueIdentifier>{3c5aa683-8bc8-4dd7-84d6-895486d9f5ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{f1c65227-ffe7-44cf-b8f9-22e7e32db0ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sfx">
+      <UniqueIdentifier>{d4ecdfdd-7371-430d-87f5-2f799dc187e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{858c1066-8c04-4f5c-8901-b5c67351f37d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\textures">
+      <UniqueIdentifier>{e17215a0-4840-4ef6-91c0-befee4aa7ae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\windows">
+      <UniqueIdentifier>{2eed164d-fd86-47f8-85f0-b5dbc52499bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\windows">
+      <UniqueIdentifier>{a897c78e-4fd9-4bbc-acda-a1add2c71345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\textures">
+      <UniqueIdentifier>{17f345c5-9ea9-4062-852f-80884a4ac12a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\formats">
+      <UniqueIdentifier>{ebc9f407-ca81-4e5b-a4a1-7bcbba1898d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\formats">
+      <UniqueIdentifier>{741a9d0a-a16e-4d7a-9fc1-13ca4dfd4dee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\sfx\ADSR.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Chorus.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Delay.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Filters.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\FiltersDelay.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Flanger.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Oscillators.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Phaser.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\Reverb.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\textures\GenTextures.h">
+      <Filter>Header Files\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\windows\Timer.h">
+      <Filter>Header Files\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="include\windows\WaveOut_Base.h">
+      <Filter>Header Files\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="include\windows\WaveOut_SFX.h">
+      <Filter>Header Files\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="include\windows\WaveOut_Simple.h">
+      <Filter>Header Files\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="include\windows\Window.h">
+      <Filter>Header Files\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="include\helpers\common.h">
+      <Filter>Header Files\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\AuxMath.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\Mat34.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\Mat44.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\Vec2.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\Vec3.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\math\Vec4.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\formats\tga.h">
+      <Filter>Header Files\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\formats\wav.h">
+      <Filter>Header Files\formats</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\PinkNoise.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sfx\PlotFilter.h">
+      <Filter>Header Files\sfx</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\textures\GenTextures.cpp">
+      <Filter>Source Files\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\Timer.cpp">
+      <Filter>Source Files\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\Window.cpp">
+      <Filter>Source Files\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\WaveOut_Base.cpp">
+      <Filter>Source Files\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\WaveOut_SFX.cpp">
+      <Filter>Source Files\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\WaveOut_Simple.cpp">
+      <Filter>Source Files\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="source\formats\tga.cpp">
+      <Filter>Source Files\formats</Filter>
+    </ClCompile>
+    <ClCompile Include="source\formats\wav.cpp">
+      <Filter>Source Files\formats</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
