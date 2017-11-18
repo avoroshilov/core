@@ -72,10 +72,15 @@ public:
 	{
 	}
 
-	Vec3 GetBasis0() { return Vec3C(_00, _10, _20); }
-	Vec3 GetBasis1() { return Vec3C(_01, _11, _21); }
-	Vec3 GetBasis2() { return Vec3C(_02, _12, _22); }
-	Vec3 GetBasis3() { return Vec3C(_03, _13, _23); }
+	Vec3 getBasis0() const { return Vec3C(_00, _10, _20); }
+	Vec3 getBasis1() const { return Vec3C(_01, _11, _21); }
+	Vec3 getBasis2() const { return Vec3C(_02, _12, _22); }
+	Vec3 getBasis3() const { return Vec3C(_03, _13, _23); }
+
+	void setBasis0(const Vec3 & vec) { _00 = vec.x; _10 = vec.y; _20 = vec.z; }
+	void setBasis1(const Vec3 & vec) { _01 = vec.x; _11 = vec.y; _21 = vec.z; }
+	void setBasis2(const Vec3 & vec) { _02 = vec.x; _12 = vec.y; _22 = vec.z; }
+	void setBasis3(const Vec3 & vec) { _03 = vec.x; _13 = vec.y; _23 = vec.z; }
 
 	Mat34 operator + (const Mat34 & mat) const
 	{
@@ -406,6 +411,39 @@ public:
 		tempCopy._22 = invDet33 * (_00*_11 - _01*_10);
 
 		*this = tempCopy;
+	}
+
+	Mat34 invertRTCopy() const
+	{
+		/*
+			If matrix is represented as
+			R	T
+			0	1
+
+			then its inverse is
+			R^T		-(R^T * T)
+			0		1
+		*/
+
+		Mat34 result;
+
+		// Inv rotation
+		result._00 = _00;
+		result._01 = _10;
+		result._02 = _20;
+		result._10 = _01;
+		result._11 = _11;
+		result._12 = _21;
+		result._20 = _02;
+		result._21 = _12;
+		result._22 = _22;
+
+		// Inv translation
+		result._03 = -(result._00 * _03 + result._01 * _13 + result._02 * _23);
+		result._13 = -(result._10 * _03 + result._11 * _13 + result._12 * _23);
+		result._23 = -(result._20 * _03 + result._21 * _13 + result._22 * _23);
+
+		return result;
 	}
 
 	Mat34 getTransposed33() const

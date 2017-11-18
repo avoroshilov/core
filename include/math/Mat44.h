@@ -83,6 +83,21 @@ public:
 	{
 	}
 
+	Vec4 getBasis0() const { return Vec4C(_00, _10, _20, _30); }
+	Vec4 getBasis1() const { return Vec4C(_01, _11, _21, _31); }
+	Vec4 getBasis2() const { return Vec4C(_02, _12, _22, _32); }
+	Vec4 getBasis3() const { return Vec4C(_03, _13, _23, _33); }
+
+	void setBasis0(const Vec3 & vec) { _00 = vec.x; _10 = vec.y; _20 = vec.z; }
+	void setBasis1(const Vec3 & vec) { _01 = vec.x; _11 = vec.y; _21 = vec.z; }
+	void setBasis2(const Vec3 & vec) { _02 = vec.x; _12 = vec.y; _22 = vec.z; }
+	void setBasis3(const Vec3 & vec) { _03 = vec.x; _13 = vec.y; _23 = vec.z; }
+
+	void setBasis0(const Vec4 & vec) { _00 = vec.x; _10 = vec.y; _20 = vec.z; _30 = vec.w; }
+	void setBasis1(const Vec4 & vec) { _01 = vec.x; _11 = vec.y; _21 = vec.z; _31 = vec.w; }
+	void setBasis2(const Vec4 & vec) { _02 = vec.x; _12 = vec.y; _22 = vec.z; _32 = vec.w; }
+	void setBasis3(const Vec4 & vec) { _03 = vec.x; _13 = vec.y; _23 = vec.z; _33 = vec.w; }
+
 	Mat44 operator + (const Mat44 & mat) const
 	{
 		return Mat44(
@@ -308,7 +323,7 @@ public:
 
 		return *this;
 	}
-	Mat44 getTransposed()
+	Mat44 getTransposed() const
 	{
 		Mat44 mat(*this);
 		return mat.transpose();
@@ -381,7 +396,7 @@ public:
 		scalar w = _30 * vec.x + _31 * vec.y + _32 * vec.z + _33;
 		vecCopy.x /= w;
 		vecCopy.y /= w;
-		//vecCopy.z /= w;
+		vecCopy.z /= w;
 
 		return vecCopy;
 	}
@@ -397,7 +412,7 @@ public:
 		w = 1.0f / w;
 		vec.x *= w;
 		vec.y *= w;
-		//vec.z *= w;
+		vec.z *= w;
 		
 		return vec;
 	}
@@ -417,7 +432,7 @@ public:
 		return vec;
 	}
 
-	Mat44 invertRT() const
+	Mat44 invertRTCopy() const
 	{
 		/*
 			If matrix is represented as

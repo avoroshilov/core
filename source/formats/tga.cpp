@@ -8,11 +8,12 @@ namespace formats
 {
 
 void writeTGA(
-	const char		*filename,
-	unsigned char	*imageData,
-	short int		width, 
-	short int		height, 
-	unsigned char	bitsPerPixel
+	const char			*filename,
+	unsigned char		*imageData,
+	short int			width, 
+	short int			height, 
+	unsigned char		bitsPerPixel,
+	ImagePixelFormat	pixelFormat
 	)
 {
 	FILE * fp;
@@ -60,13 +61,29 @@ void writeTGA(
 	int bytesPerPixel = bitsPerPixel / 8;
 	if (bytesPerPixel >= 3)
 	{
-		unsigned char temp_swap;
-		for (int i = 0, iend = width * height * bytesPerPixel; i < iend; i += bytesPerPixel)
+		if (pixelFormat == ImagePixelFormat::eRGBA)
 		{
-			temp_swap = imageData[i];
-			imageData[i] = imageData[i+2];
-			imageData[i+2] = temp_swap;
+			unsigned char temp_swap;
+			for (int i = 0, iend = width * height * bytesPerPixel; i < iend; i += bytesPerPixel)
+			{
+				temp_swap = imageData[i];
+				imageData[i] = imageData[i+2];
+				imageData[i+2] = temp_swap;
+			}
 		}
+		else if (pixelFormat == ImagePixelFormat::eABGR)
+		{
+			unsigned char temp_swap;
+			for (int i = 0, iend = width * height * bytesPerPixel; i < iend; i += bytesPerPixel)
+			{
+				temp_swap = imageData[i];
+				imageData[i] = imageData[i+1];
+				imageData[i+1] = imageData[i+2];
+				imageData[i+2] = imageData[i+3];
+				imageData[i+3] = temp_swap;
+			}
+		}
+		// Nothing to do in eBGRA case
 	}
 
 	fwrite(imageData, sizeof(unsigned char), width * height * bytesPerPixel, fp);
