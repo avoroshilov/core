@@ -23,8 +23,10 @@
     <ClInclude Include="include\formats\wav.h" />
     <ClInclude Include="include\helpers\common.h" />
     <ClInclude Include="include\math\AuxMath.h" />
+    <ClInclude Include="include\math\Mat33.h" />
     <ClInclude Include="include\math\Mat34.h" />
     <ClInclude Include="include\math\Mat44.h" />
+    <ClInclude Include="include\math\Quat.h" />
     <ClInclude Include="include\math\Vec2.h" />
     <ClInclude Include="include\math\Vec3.h" />
     <ClInclude Include="include\math\Vec4.h" />

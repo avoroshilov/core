@@ -3,6 +3,7 @@
 #include "helpers/common.h"
 #include "math/AuxMath.h"
 #include "math/Vec3.h"
+#include "math/Mat33.h"
 
 namespace math
 {
@@ -25,9 +26,9 @@ public:
 	};
 
 	Mat34() { }
-	Mat34(float _00_,		 float _01_ = 0.0f, float _02_ = 0.0f, float _03_ = 0.0f,
-			float _10_ = 0.0f, float _11_ = 0.0f, float _12_ = 0.0f, float _13_ = 0.0f,
-			float _20_ = 0.0f, float _21_ = 0.0f, float _22_ = 0.0f, float _23_ = 0.0f):
+	Mat34(	float _00_,			float _01_ = 0.0f, float _02_ = 0.0f, float _03_ = 0.0f,
+			float _10_ = 0.0f,	float _11_ = 0.0f, float _12_ = 0.0f, float _13_ = 0.0f,
+			float _20_ = 0.0f,	float _21_ = 0.0f, float _22_ = 0.0f, float _23_ = 0.0f):
 			_00(_00_), _01(_01_), _02(_02_), _03(_03_),
 			_10(_10_), _11(_11_), _12(_12_), _13(_13_),
 			_20(_20_), _21(_21_), _22(_22_), _23(_23_)
@@ -38,6 +39,12 @@ public:
 			_00(mat._00), _01(mat._01), _02(mat._02), _03(mat._03),
 			_10(mat._10), _11(mat._11), _12(mat._12), _13(mat._13),
 			_20(mat._20), _21(mat._21), _22(mat._22), _23(mat._23)
+	{
+	}
+	explicit Mat34(const Mat33 & mat) :
+			_00(mat._00), _01(mat._01), _02(mat._02), _03(0.0f),
+			_10(mat._10), _11(mat._11), _12(mat._12), _13(0.0f),
+			_20(mat._20), _21(mat._21), _22(mat._22), _23(0.0f)
 	{
 	}
 
@@ -121,6 +128,15 @@ public:
 		_00 = mat._00; _01 = mat._01; _02 = mat._02; _03 = mat._03;
 		_10 = mat._10; _11 = mat._11; _12 = mat._12; _13 = mat._13;
 		_20 = mat._20; _21 = mat._21; _22 = mat._22; _23 = mat._23;
+
+		return *this;
+	}
+
+	Mat34 & operator = (const Mat33 & mat)
+	{
+		_00 = mat._00; _01 = mat._01; _02 = mat._02; _03 = 0.0f;
+		_10 = mat._10; _11 = mat._11; _12 = mat._12; _13 = 0.0f;
+		_20 = mat._20; _21 = mat._21; _22 = mat._22; _23 = 0.0f;
 
 		return *this;
 	}
@@ -392,7 +408,7 @@ public:
 		return normal;
 	}
 
-	void invert33()
+	Mat34 & invert33()
 	{
 		Mat34 tempCopy(*this);
 
@@ -410,7 +426,13 @@ public:
 		tempCopy._21 = invDet33 * (_01*_20 - _00*_21);
 		tempCopy._22 = invDet33 * (_00*_11 - _01*_10);
 
+		tempCopy._03 = 0.0f;
+		tempCopy._13 = 0.0f;
+		tempCopy._23 = 0.0f;
+
 		*this = tempCopy;
+
+		return *this;
 	}
 
 	Mat34 invertRTCopy() const
@@ -462,22 +484,26 @@ public:
 		tempCopy._21 = _12;
 		tempCopy._22 = _22;
 
+		tempCopy._03 = 0.0f;
+		tempCopy._13 = 0.0f;
+		tempCopy._23 = 0.0f;
+
 		return tempCopy;
 	}
 
 	// Vector Axis must be normalized for correct Rotation [ RAD ]
 	///////////////////////////////////////////////////////////////////////
-	void fillRotation(const Vec3 & axis, float radAngle)
+	Mat34 & fillRotation(const Vec3 & axis, float radAngle)
 	{
 		float cf = cosf(radAngle),
-				sf = sinf(radAngle);
+			  sf = sinf(radAngle);
 
-		float xx = sqr(axis.x),
-				yy = sqr(axis.y),
-				zz = sqr(axis.z);
+		float xx = axis.x * axis.x,
+			  yy = axis.y * axis.y,
+			  zz = axis.z * axis.z;
 		float xy = axis.x * axis.y,
-				yz = axis.y * axis.z,
-				zx = axis.z * axis.x;
+			  yz = axis.y * axis.z,
+			  zx = axis.z * axis.x;
 
 		_00 = xx + cf * (1.0f - xx);
 		_01 = xy - cf * xy - sf * axis.z;
@@ -490,18 +516,36 @@ public:
 		_20 = zx - cf * zx - sf * axis.y;
 		_21 = yz - cf * yz + sf * axis.x;
 		_22 = zz + cf * (1.0f - zz);
+		return *this;
 	}
-	void fillTranslation(const Vec3 & vec)
+	Mat34 & fillRotation(const Mat33 & rotation)
+	{
+		_00 = rotation._00;
+		_01 = rotation._01;
+		_02 = rotation._02;
+
+		_10 = rotation._10;
+		_11 = rotation._11;
+		_12 = rotation._12;
+
+		_20 = rotation._20;
+		_21 = rotation._21;
+		_22 = rotation._22;
+		return *this;
+	}
+	Mat34 & fillTranslation(const Vec3 & vec)
 	{
 		_03 = vec.x;
 		_13 = vec.y;
 		_23 = vec.z;
+		return *this;
 	}
-	void fillScale(const Vec3 & vec)
+	Mat34 & fillScale(const Vec3 & vec)
 	{
 		_00 = vec.x;
 		_11 = vec.y;
 		_22 = vec.z;
+		return *this;
 	}
 
 	Mat34 & rotate(const Vec3 & axis, float radAngle)
@@ -535,9 +579,26 @@ public:
 		return *this;
 	}
 
-	Mat34 getRotation() const
+	Mat34 getRotation34() const
 	{
-		Mat34 rotMatrix(0.0f);
+		Mat34 rotMatrix;
+
+		rotMatrix._00 = _00;
+		rotMatrix._01 = _01;
+		rotMatrix._02 = _02;
+		rotMatrix._10 = _10;
+		rotMatrix._11 = _11;
+		rotMatrix._12 = _12;
+		rotMatrix._20 = _20;
+		rotMatrix._21 = _21;
+		rotMatrix._22 = _22;
+		rotMatrix.fillTranslation(Vec3C(0.0f, 0.0f, 0.0f));
+
+		return rotMatrix;
+	}
+	Mat33 getRotation33() const
+	{
+		Mat33 rotMatrix;
 
 		rotMatrix._00 = _00;
 		rotMatrix._01 = _01;
