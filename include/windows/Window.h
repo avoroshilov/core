@@ -62,6 +62,21 @@ enum class KeyCode
 typedef void (* pfnKeyStateCallback)(void * pUserData, KeyCode keyCode, KeyState keyDownState);
 struct MouseEvent
 {
+	enum class Type
+	{
+		eMove,
+		eLBDown,
+		eLBUp,
+		eMBDown,
+		eMBUp,
+		eRBDown,
+		eRBUp,
+		eWheel,
+
+		eNUM_ENTRIES
+	};
+
+	Type type;
 	int dX;
 	int dY;
 };

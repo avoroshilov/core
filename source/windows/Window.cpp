@@ -474,7 +474,50 @@ namespace windows
 						MouseEvent mouseEvent = {};
 						mouseEvent.dX = raw->data.mouse.lLastX;
 						mouseEvent.dY = raw->data.mouse.lLastY;
-						g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						mouseEvent.type = MouseEvent::Type::eMove;
+						if (mouseEvent.dX != 0 || mouseEvent.dY != 0)
+						{
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+							mouseEvent.dX = 0;
+							mouseEvent.dY = 0;
+						}
+						if (raw->data.mouse.usButtonFlags & RI_MOUSE_LEFT_BUTTON_DOWN)
+						{
+							mouseEvent.type = MouseEvent::Type::eLBDown;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
+						else if (raw->data.mouse.usButtonFlags & RI_MOUSE_LEFT_BUTTON_UP)
+						{
+							mouseEvent.type = MouseEvent::Type::eLBUp;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
+						if (raw->data.mouse.usButtonFlags & RI_MOUSE_MIDDLE_BUTTON_DOWN)
+						{
+							mouseEvent.type = MouseEvent::Type::eMBDown;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
+						else if (raw->data.mouse.usButtonFlags & RI_MOUSE_MIDDLE_BUTTON_UP)
+						{
+							mouseEvent.type = MouseEvent::Type::eMBUp;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
+						if (raw->data.mouse.usButtonFlags & RI_MOUSE_RIGHT_BUTTON_DOWN)
+						{
+							mouseEvent.type = MouseEvent::Type::eRBDown;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
+						else if (raw->data.mouse.usButtonFlags & RI_MOUSE_RIGHT_BUTTON_UP)
+						{
+							mouseEvent.type = MouseEvent::Type::eRBUp;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
+						if (raw->data.mouse.usButtonFlags & RI_MOUSE_WHEEL)
+						{
+							mouseEvent.type = MouseEvent::Type::eWheel;
+							const int c_wheelStep = WHEEL_DELTA;
+							mouseEvent.dX = (short)raw->data.mouse.usButtonData / c_wheelStep;
+							g_pfnMouseEventCallback(g_pUserData, mouseEvent);
+						}
 					}
 				}
 
