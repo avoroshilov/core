@@ -19,6 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\collision\contact_helpers.h" />
+    <ClInclude Include="include\collision\convex_hull.h" />
+    <ClInclude Include="include\collision\convex_raycast.h" />
+    <ClInclude Include="include\collision\convex_shapes.h" />
+    <ClInclude Include="include\collision\mpr.h" />
     <ClInclude Include="include\formats\tga.h" />
     <ClInclude Include="include\formats\wav.h" />
     <ClInclude Include="include\helpers\common.h" />
@@ -30,6 +35,17 @@
     <ClInclude Include="include\math\Vec2.h" />
     <ClInclude Include="include\math\Vec3.h" />
     <ClInclude Include="include\math\Vec4.h" />
+    <ClInclude Include="include\misc\PoolBasic.h" />
+    <ClInclude Include="include\misc\SortRadix.h" />
+    <ClInclude Include="include\physics\geometry.h" />
+    <ClInclude Include="include\physics\hl_rigidbody.h" />
+    <ClInclude Include="include\physics\joints.h" />
+    <ClInclude Include="include\physics\joints_fem.h" />
+    <ClInclude Include="include\physics\phys_helpers.h" />
+    <ClInclude Include="include\physics\solver_base.h" />
+    <ClInclude Include="include\physics\solver_lcpcg.h" />
+    <ClInclude Include="include\physics\solver_pgs.h" />
+    <ClInclude Include="include\physics\solver_pgs_ordered.h" />
     <ClInclude Include="include\sfx\ADSR.h" />
     <ClInclude Include="include\sfx\Chorus.h" />
     <ClInclude Include="include\sfx\Delay.h" />
@@ -51,6 +67,12 @@
   <ItemGroup>
     <ClCompile Include="source\formats\tga.cpp" />
     <ClCompile Include="source\formats\wav.cpp" />
+    <ClCompile Include="source\physics\joints.cpp" />
+    <ClCompile Include="source\physics\joints_fem.cpp" />
+    <ClCompile Include="source\physics\solver_base.cpp" />
+    <ClCompile Include="source\physics\solver_lcpcg.cpp" />
+    <ClCompile Include="source\physics\solver_pgs.cpp" />
+    <ClCompile Include="source\physics\solver_pgs_ordered.cpp" />
     <ClCompile Include="source\textures\GenTextures.cpp" />
     <ClCompile Include="source\windows\Timer.cpp" />
     <ClCompile Include="source\windows\WaveOut_Base.cpp" />

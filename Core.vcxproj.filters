@@ -43,6 +43,21 @@
     <Filter Include="Source Files\formats">
       <UniqueIdentifier>{741a9d0a-a16e-4d7a-9fc1-13ca4dfd4dee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\misc">
+      <UniqueIdentifier>{c1323373-3f39-4e64-a7c8-c59ac2045ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\collision">
+      <UniqueIdentifier>{5e7d497f-0396-438e-9a31-038f1891a05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\physics">
+      <UniqueIdentifier>{bfd44b87-5359-4212-b91b-2f5e9e4f18dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\collision">
+      <UniqueIdentifier>{91c9bc76-597d-407c-8cc4-4b20c495db3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\physics">
+      <UniqueIdentifier>{1560d62a-53d4-4911-ac07-565bf5d107a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\sfx\ADSR.h">
@@ -126,8 +141,56 @@
     <ClInclude Include="include\math\Mat33.h">
       <Filter>Header Files\math</Filter>
     </ClInclude>
+    <ClInclude Include="include\misc\SortRadix.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\misc\PoolBasic.h">
+      <Filter>Header Files\misc</Filter>
+    </ClInclude>
     <ClInclude Include="include\math\Quat.h">
       <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\contact_helpers.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\convex_hull.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\convex_raycast.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\convex_shapes.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collision\mpr.h">
+      <Filter>Header Files\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\geometry.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\hl_rigidbody.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\joints.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\joints_fem.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\phys_helpers.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\solver_base.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\solver_lcpcg.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\solver_pgs.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\physics\solver_pgs_ordered.h">
+      <Filter>Header Files\physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +217,24 @@
     </ClCompile>
     <ClCompile Include="source\formats\wav.cpp">
       <Filter>Source Files\formats</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\joints.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\joints_fem.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\solver_base.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\solver_lcpcg.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\solver_pgs.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\solver_pgs_ordered.cpp">
+      <Filter>Source Files\physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
