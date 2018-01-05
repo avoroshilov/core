@@ -236,6 +236,37 @@ void SolverPGSOrdered::solve(float dt)
 				c_idx = m_numJoints - i - 1;
 			else if (m_order == Order::eRandom || m_order == Order::eCustom)
 				c_idx = ptr_m_permutIdx[i];
+			else if (m_order == Order::eLocalShuffle2)
+			{
+				if (k&1)
+				{
+					// Each odd iteration shuffle (even, odd) constraint rows pair 
+					if (i&1)
+					{
+						c_idx = i-1;
+					}
+					else
+					{
+						c_idx = i+1;
+						if (c_idx == m_numJoints)
+							c_idx = m_numJoints - 1;
+					}
+				}
+				assert(c_idx < m_numJoints);
+			}
+			else if (m_order == Order::eSplit2)
+			{
+				if (k&1)
+				{
+					// Each odd iteration solve even constraint rows first, then all odd rows
+					c_idx = i*2;
+					if (c_idx >= m_numJoints)
+					{
+						c_idx = (c_idx-m_numJoints)+1;
+					}
+				}
+				assert(c_idx < m_numJoints);
+			}
 
 			// Current Row of Matrix B
 			dLam = ptr_m_RHS[c_idx];

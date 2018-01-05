@@ -14,6 +14,8 @@ public:
 		eForward,
 		eBackward,
 		eRandom,
+		eLocalShuffle2,
+		eSplit2,
 
 		eCustom,
 
