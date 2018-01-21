@@ -44,6 +44,7 @@
     <ClInclude Include="include\physics\phys_helpers.h" />
     <ClInclude Include="include\physics\solver_base.h" />
     <ClInclude Include="include\physics\solver_lcpcg.h" />
+    <ClInclude Include="include\physics\solver_nncg.h" />
     <ClInclude Include="include\physics\solver_pgs.h" />
     <ClInclude Include="include\physics\solver_pgs_ordered.h" />
     <ClInclude Include="include\sfx\ADSR.h" />
@@ -71,6 +72,7 @@
     <ClCompile Include="source\physics\joints_fem.cpp" />
     <ClCompile Include="source\physics\solver_base.cpp" />
     <ClCompile Include="source\physics\solver_lcpcg.cpp" />
+    <ClCompile Include="source\physics\solver_nncg.cpp" />
     <ClCompile Include="source\physics\solver_pgs.cpp" />
     <ClCompile Include="source\physics\solver_pgs_ordered.cpp" />
     <ClCompile Include="source\textures\GenTextures.cpp" />
@@ -91,26 +93,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>

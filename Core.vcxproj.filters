@@ -192,6 +192,9 @@
     <ClInclude Include="include\physics\solver_pgs_ordered.h">
       <Filter>Header Files\physics</Filter>
     </ClInclude>
+    <ClInclude Include="include\physics\solver_nncg.h">
+      <Filter>Header Files\physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\textures\GenTextures.cpp">
@@ -234,6 +237,9 @@
       <Filter>Source Files\physics</Filter>
     </ClCompile>
     <ClCompile Include="source\physics\solver_pgs_ordered.cpp">
+      <Filter>Source Files\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\physics\solver_nncg.cpp">
       <Filter>Source Files\physics</Filter>
     </ClCompile>
   </ItemGroup>
