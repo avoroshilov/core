@@ -402,8 +402,6 @@ void SolverLCPCG::solve(float dt)
 	// We have already y = Ax, so ||A|| == ||y|| (which is already calculated too)
 	alpha_bar = 1.6f / sqrtf(y_norm_sq);
 
-	float prev_grad_norm = FLT_MAX;
-
 	//////////////////////////////////////////////////////////////////////////
 	// CG-based solver itself
 	//////////////////////////////////////////////////////////////////////////
@@ -2318,32 +2316,6 @@ void SolverLCPCG::solve(float dt)
 
 #endif
 		}
-
-		
-#if (SOLVER_OBJECTIVE_FUNCTION_OUTPUT == 1)
-
-		ptr_m_g = &m_g[0];
-		ptr_m_RHS = &m_RHS[0];
-		ptr_m_lambda = &m_lambda[0];
-
-		float lambda_norm = 0.0f;
-		float interm_lambda_dot_grad = 0.0f;
-		for (i = 0; i < m_numJoints; ++i)
-		{
-			lambda_norm += val_arr(m_lambda) * val_arr(m_lambda);
-
-			interm_lambda_dot_grad += inc_arr(m_g) * val_arr(m_lambda);
-			
-			//  - x dot b
-			interm_lambda_dot_grad -= inc_arr(m_RHS) * inc_arr(m_lambda);
-		}
-
-		gLog.Print("[%12.10f]----------------------------------------> 0.5 * (x * (Ax - b) - x * b) = %f;", lambda_norm, 0.5f * interm_lambda_dot_grad);
-
-#endif
-
-		//assert(grad_norm < prev_grad_norm);
-		//prev_grad_norm = grad_norm;
 
 #if (SOLVER_STOPPING_CRITERIA == 1)
 		// Stopping criteria
